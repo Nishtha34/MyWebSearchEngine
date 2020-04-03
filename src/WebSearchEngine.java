@@ -125,7 +125,6 @@ public class WebSearchEngine
 		return my_counter;
 	}
 
-	// Merge-sort for ranking of the pages
 	public static void rankFiles(Hashtable<?, Integer> fname, int numberOfOccurrences) 
 	{
 		// Transfer as List and sort it
@@ -156,18 +155,18 @@ public class WebSearchEngine
 		} 
 	}
 
-	//Using Regular Expressions for pattern matching
+	//Use of regular expressions and edit distance for spell checking
 	public void suggestions(String mispelledPattern) 
 	{
 		try 
 		{
-			// String to be scanned to find the pattern.
+			// String scanned to find the pattern.
 			String line = " ";
 			String reg_ex = "[\\w]+[@$%^&*()!?=.{}\b\n\t]*";
 
 			// Create a Pattern object
 			Pattern pat = Pattern.compile(reg_ex);
-			// Now create matcher object.
+			// Creating matcher object.
 			Matcher my_match = pat.matcher(line);
 			int file_Number = 0;
 			try 
@@ -182,12 +181,12 @@ public class WebSearchEngine
 				}
 
 				Set keys = new HashSet();
-				Integer value = 1;
 				Integer val = 0;
+				Integer value = 1;
+				
 				int counter = 0;
 
-				System.out.println("\nDid you mean?:");
-				System.out.println("********************");
+				System.out.println("\nDid you mean? ");
 				for (Map.Entry entry : numbers.entrySet()) 
 				{
 					if (val == entry.getValue()) 

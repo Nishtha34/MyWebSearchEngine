@@ -27,6 +27,14 @@ public class MyWebSpider
 	{
 		webLinks = new HashSet<String>();
 	}
+	
+	/**
+	 * Saves HTML file to the specified path. These files will be used for searching
+	 * @param filename
+	 * @param stringUrl
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
 	public void saveUrl(final String filename, final String stringUrl) throws MalformedURLException, IOException {
 		{
 			try 

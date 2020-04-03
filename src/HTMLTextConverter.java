@@ -2,39 +2,38 @@ import java.io.*;
 
 import org.jsoup.Jsoup;
 
-public class HTMLTextConverter {
-	// public static void main(String[] args) throws FileNotFoundException,
-	// NullPointerException, IOException {
-	// convertHtmlToText();
-	// }
+public class HTMLTextConverter 
+{
+	/**
+	 * This method converts HTML files into text files.
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 * @throws NullPointerException
+	 */
+	public static void convertHtmlToText() 
+			throws IOException, FileNotFoundException, NullPointerException
+	{
+		org.jsoup.nodes.Document myDocument = null;
+		BufferedWriter bufferedWriter = null;
 
-	// This method converts HTML Files into text documents.
-	public static void convertHtmlToText() throws IOException, FileNotFoundException, NullPointerException {
-		org.jsoup.nodes.Document my_doc = null;
-		BufferedWriter my_out = null;
-
-		try {
+		try
+		{
 			File dir = new File("C:\\Users\\Namrata\\eclipse-workspace\\MyWebSearchEngine\\src\\HTMLFiles\\");
-			File[] file_Array = dir.listFiles();
+			File[] files = dir.listFiles();
 			int i = 0;
-			for (File file1 : file_Array) {
-				// System.out.println(i);
-				// i++;
-				my_doc = Jsoup.parse(file1, "UTF-8");
-				String my_str = file1.getName().substring(0, file1.getName().lastIndexOf('.'));
-				my_out = new BufferedWriter(new FileWriter(
-						"C:\\Users\\Namrata\\eclipse-workspace\\MyWebSearchEngine\\ConvertedTextFiles\\" + my_str + ".txt"));
-				my_out.write(my_doc.text());
-				my_out.close();
-				// System.out.println("File " + file.getName() + " converted into " +
-				// file.getName()+ ".txt successfully");
-
+			for (File file : files) 
+			{
+				myDocument = Jsoup.parse(file, "UTF-8");
+				String myString = file.getName().substring(0, file.getName().lastIndexOf('.'));
+				bufferedWriter = new BufferedWriter(new FileWriter(
+						"C:\\Users\\Namrata\\eclipse-workspace\\MyWebSearchEngine\\ConvertedTextFiles\\" + myString + ".txt"));
+				bufferedWriter.write(myDocument.text());
+				bufferedWriter.close();
 			}
-
-		} catch (Exception e) {
-			// TODO: handle exception
+		} 
+		catch (Exception e)
+		{
+			System.out.println(e.getMessage());
 		}
-
 	}
-
 }
